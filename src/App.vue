@@ -2,7 +2,6 @@
   <main id="app">
     <header>
       <h1>Game of Chance</h1>
-
     </header>
     <game/>
   </main>

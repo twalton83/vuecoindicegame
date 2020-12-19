@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <button>
+  <div >
+    <button v-if="viewable" @click.stop= "$emit('player-choice', '1')">
       Heads
     </button>
-    <button>
+    <button v-if="viewable"
+    @click.stop= "$emit('player-choice', '2')">
       Tails
     </button>
   </div>
@@ -15,12 +16,13 @@ export default {
   name: "CoinGame",
   data () {
     return {
-      betSet : false
     }
   },
   methods: {
 
-  }
+   
+  },
+  props : ["viewable"]
 }
 </script>
 

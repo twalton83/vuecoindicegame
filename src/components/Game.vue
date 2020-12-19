@@ -1,22 +1,25 @@
 <template>
   <div>
-  <h1 v-if="gameName">{{gameName}} Game</h1>
-      <h2> 
-        Coins: {{coins}} 
-      </h2>
+  <h2> 
+    Coins: {{coins}} 
+  </h2>
+  <h3 v-if="gameName">{{gameName}} Game</h3>
+
   <div v-if="gameSelected === false">
-    <!-- this "passes down the method" siilarly to react -->
-    <game-selector v-on:set-game="setGame"/>
- 
+    <!-- this "passes down the method" similarly to react -->
+    <game-selector @set-game="setGame"/>
   </div>
 
   <div v-if="gameName === 'Coin'">
-    <coin-game/>
+    <coin-game :viewable="betSubmitted" 
+    @playerChoice="setPlayerChoice"
+     />
       <bet-input v-on:set-bet="setBet" v-if="!betSubmitted && gameSelected"/>
   </div>
 
   <div v-else-if="gameName === 'Dice'">
-    <dice-game/>
+    <dice-game :viewable="betSubmitted" 
+     @playerChoice="setPlayerChoice"/>
        <bet-input v-on:set-bet="setBet" v-if="!betSubmitted && gameSelected"/>
   </div>
 
@@ -42,7 +45,9 @@ export default {
       gameName : "",
       gameSelected: false,
       betSubmitted: false,
-      coins: 100
+      coins: 100,
+      answer: null,
+      playerSelection: null
     }
   },
   methods : {
@@ -53,9 +58,24 @@ export default {
     },
     setBet (amount) {
       const bet = amount;
-      alert(bet)
       this.coins = this.coins - bet
       this.betSubmitted = true
+      this.answer = this.randomSelection()
+    },
+    randomSelection(){
+      if (this.gameName === 'Coin'){
+        return Math.floor(Math.random() * 2) + 1
+      } else {
+        return Math.floor(Math.random() * 6) + 1
+      }
+    },
+    setPlayerChoice (choice){
+      console.log(choice)
+      this.playerSelection = choice
+    },
+    checkForWin(){
+      return this.playerSelection === this.answer ? this.coins = this.coins + this.bet * 2 : null
+
     }
   }
 }

@@ -8,11 +8,8 @@
 <script>
 
 export default {
-  components: { 
- 
-  },
   name: "DiceGame",
-  props : ['coins']
+  props: ['viewable']
 
 }
 </script>
