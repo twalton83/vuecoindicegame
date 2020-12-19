@@ -16,8 +16,7 @@
 
 <script>
 export default {
-  name: "GameSelector",
-   props : ['coins']
+  name: "GameSelector"
 }
 </script>
 

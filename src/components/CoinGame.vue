@@ -1,20 +1,25 @@
 <template>
   <div>
-    <h3>Coin Game</h3>
-    <bet-input/>
+    <button>
+      Heads
+    </button>
+    <button>
+      Tails
+    </button>
   </div>
-
 </template>
 
 <script>
-import BetInput from './BetInput.vue'
+
 export default {
-  components: { BetInput },
   name: "CoinGame",
   data () {
     return {
       betSet : false
     }
+  },
+  methods: {
+
   }
 }
 </script>

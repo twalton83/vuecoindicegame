@@ -1,7 +1,7 @@
 <template>
     <div>
       <input type= "number" v-model = "bet"/> 
-      <button   v-on:click="$emit('submit-bet', 'bet')">
+      <button  v-on:click= "$emit('set-bet', '10')">
         Submit
       </button>
     </div>
@@ -10,7 +10,6 @@
 <script>
 export default {
   name : 'BetInput',
-  props : ['coins'],
   data () {
     return {
       bet : null

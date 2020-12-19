@@ -2,26 +2,22 @@
   <main id="app">
     <header>
       <h1>Game of Chance</h1>
-      <h2> 
-        Coins: {{coins}} 
-      </h2>
+
     </header>
-    <game-container v-bind:coins="coins"/>
+    <game/>
   </main>
 </template>
 
 <script>
-import GameContainer from './components/GameContainer.vue'
+import Game from './components/Game.vue'
 
 export default {
   name: 'App',
   components: {
-    GameContainer,
+    Game,
   },
-  data () {
-    return {
-      coins: 100
-    }
+ 
+  methods : {
 
   }
 }
